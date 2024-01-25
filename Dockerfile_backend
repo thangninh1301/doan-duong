@@ -17,9 +17,8 @@ FROM build AS publish
 RUN dotnet publish "BackEnd.csproj" -c Release -o /app/publish
 
 FROM base AS final
-WORKDIR /app/BackEnd/Resources/
-COPY BackEnd/Resources .
 
 WORKDIR /app
+COPY BackEnd/Resources .
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "BackEnd.dll"]
