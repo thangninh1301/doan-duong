@@ -49,7 +49,7 @@ var viewmodel = function () {
         $.ajax({
             type: "get",
             url: backendUrl + "/api/TimeSlot",
-           // url: "https://localhost:44310/api/TimeSlot",
+           // url: "https://backend-btl-duong.mooo.com/api/TimeSlot",
             contentType: "application/json",
             success: function (data) {
                 $.each(data, function (ex, item) {
@@ -70,7 +70,7 @@ var viewmodel = function () {
         $.ajax({
             type: "get",
             url: backendUrl + "/api/Department",
-           // url: "https://localhost:44310/api/Department",
+           // url: "https://backend-btl-duong.mooo.com/api/Department",
             contentType: "application/json",
             success: function (data) {
                 $.each(data, function (ex, item) {
@@ -92,7 +92,7 @@ var viewmodel = function () {
         $.ajax({
             type: "get",
             url: backendUrl + "/api/Admin/Doctor/" + idDepart,
-            // url: "https://localhost:44310/api/Admin/Doctor/" + idDepart ,
+            // url: "https://backend-btl-duong.mooo.com/api/Admin/Doctor/" + idDepart ,
             contentType: "application/json",
             success: function (data) {
                 self.arrayDoctor([]);
@@ -204,7 +204,7 @@ var viewmodel = function () {
             $.ajax({
                 type: "PUT",
                 url: backendUrl + "/api/ApointmentTickets",
-                //url: "https://localhost:44310/api/ApointmentTickets",
+                //url: "https://backend-btl-duong.mooo.com/api/ApointmentTickets",
                 contentType: "application/json",
                 data: JSON.stringify(crdata),
                 success: function (data) {
@@ -226,7 +226,7 @@ var viewmodel = function () {
             $.ajax({
                 type: "PUT",
                 url: backendUrl + "/api/ApointmentTickets" + item.id,
-               // url: "https://localhost:44310/api/ApointmentTickets/" + item.id,
+               // url: "https://backend-btl-duong.mooo.com/api/ApointmentTickets/" + item.id,
                 contentType: "application/json",
                 success: function (data) {
 

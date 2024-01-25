@@ -65,7 +65,7 @@
         $.ajax({
             type: "GET",
             url: backendUrl + "/api/TimeSlot",
-           // url: "https://localhost:44310/api/TimeSlot",
+           // url: "https://backend-btl-duong.mooo.com/api/TimeSlot",
             contentType: "application/json",
             success: function (data) {
                 $.each(data, function (ex, item) {
@@ -202,7 +202,7 @@
         $.ajax({
             type: "get",
             url: backendUrl + "/api/Admin/Date/" + $('#inputDate').val(),
-           // url: "https://localhost:44310/api/Admin/Date/" + $('#inputDate').val(),
+           // url: "https://backend-btl-duong.mooo.com/api/Admin/Date/" + $('#inputDate').val(),
             contentType: "application/json",           
             success: function (data) {
                 self.arrays([]);

@@ -47,7 +47,7 @@ var viewmodel = function () {
         $.ajax({
             type: "get",
             url: backendUrl + "/api/DoctorTest/aa/" + doctorTestId,
-            //url: "https://localhost:44310/api/DoctorTest/aa/",
+            //url: "https://backend-btl-duong.mooo.com/api/DoctorTest/aa/",
             contentType: "application/Json",
             success: function (data) {
                 $.each(data, function (ex, item) {
@@ -74,7 +74,7 @@ var viewmodel = function () {
             formdata.append("diagnostic", $('#diagnostic').val());
             $.ajax({
                 type: "post",
-                url: "https://localhost:44310/api/DoctorTest",
+                url: "https://backend-btl-duong.mooo.com/api/DoctorTest",
                 cache: false,
                 contentType: false,
                 processData: false,

@@ -8,7 +8,7 @@
         var id = $('#Id').val();
         $.ajax({
             type: "GET",
-            url: "https://localhost:44310/api/UserApointmentTicket/"+id,
+            url: "https://backend-btl-duong.mooo.com/api/UserApointmentTicket/"+id,
             contentType: "application/json",
             dataType: "json",
             success: function (data) {
@@ -69,7 +69,7 @@
             }
             $.ajax({
                 type: "POST",
-                url: "https://localhost:44310/api/UserRegisterTicket",
+                url: "https://backend-btl-duong.mooo.com/api/UserRegisterTicket",
                 data: ko.toJSON(DAdata),
                 contentType: "application/json",
                 success: function (data) {
@@ -91,7 +91,7 @@
         self.resultArrays([]);
         $.ajax({
             type: "GET",
-            url: "https://localhost:44310/api/UserResult",
+            url: "https://backend-btl-duong.mooo.com/api/UserResult",
             contentType: "application/json",
             success: function (data) {
                 self.resultArrays([]);

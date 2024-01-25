@@ -47,7 +47,7 @@ var viewmodel = function () {
         $.ajax({
             type: "get",
             url: backendUrl + "/api/Departments",
-            //url: "https://localhost:44310/api/Department",
+            //url: "https://backend-btl-duong.mooo.com/api/Department",
             contentType: "application/Json",
             success: function (data) {
                 $.each(data, function (ex, item) {
@@ -82,7 +82,7 @@ var viewmodel = function () {
             $.ajax({
                 type: "POST",
                 url: backendUrl + "/api/Department",
-               // url: "https://localhost:44310/api/Department",
+               // url: "https://backend-btl-duong.mooo.com/api/Department",
                 data: JSON.stringify(crdata),
                 contentType: "application/json",
                 success: function () {
@@ -128,7 +128,7 @@ var viewmodel = function () {
                 $.ajax({
                     type: "PUT",
                     url: backendUrl + "/api/Department",
-                   // url: "https://localhost:44310/api/Department",
+                   // url: "https://backend-btl-duong.mooo.com/api/Department",
                     data: JSON.stringify(crdata),
                     contentType: "application/json",
 
@@ -151,7 +151,7 @@ var viewmodel = function () {
                 $.ajax({
                     type: "PUT",
                     url: backendUrl + "/api/Department/" + item.id,
-                   // url: "https://localhost:44310/api/Department/" + item.id,
+                   // url: "https://backend-btl-duong.mooo.com/api/Department/" + item.id,
                     contentType: "application/json",
                     success: function (data) {
 

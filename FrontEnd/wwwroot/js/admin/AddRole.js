@@ -7,7 +7,7 @@
         self.selectedRoles([]);
         $.ajax({
             type: "get",
-            url: "https://localhost:44310/api/Admin/AllUserRole",
+            url: "https://backend-btl-duong.mooo.com/api/Admin/AllUserRole",
             contentType: "application/json",
             success: function (data) {
                 self.arrays([]);
@@ -24,7 +24,7 @@
         
         $.ajax({
             type: "get",
-            url: "https://localhost:44310/api/Role",
+            url: "https://backend-btl-duong.mooo.com/api/Role",
             contentType: "application/json",
             success: function (data) {
                 self.selectedRoles([]);
@@ -65,7 +65,7 @@
             }
                 $.ajax({
                     type: "post",
-                    url: "https://localhost:44310/api/Admin/AddRoleForUser",
+                    url: "https://backend-btl-duong.mooo.com/api/Admin/AddRoleForUser",
                     contentType: "application/json",
                     data: JSON.stringify(data1),
                     success: function (data) {
