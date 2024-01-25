@@ -8,7 +8,7 @@
 @using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
 <script>
-    const backendUrl = @Json.Serialize(@Configuration.GetSection("Domain").GetSection("Backend").Value);
+    const backendUrl = "https://backend-btl-duong.mooo.com";
 </script>
 @if (SignInManager.IsSignedIn(User))
 {
