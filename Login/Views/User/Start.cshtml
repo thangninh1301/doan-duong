@@ -1,0 +1,261 @@
+﻿
+@{
+    Layout = null;
+}
+@using Microsoft.AspNetCore.Identity
+@using BackEnd.Models
+@inject SignInManager<ApplicationUser> SignInManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/css/style.css">
+    
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <div class="header">
+            <img src="~/image/theme_clinika_logo.png" alt="">
+               
+                <ul>
+                    <li class="nav-item"><a href="#">Trang chủ</a> </li>
+                    <li class="nav-item"><a href="#about">giới thiệu</a></li>
+                    <li class="nav-item"><a href="#khoa">Chuyên khoa</a> </li>
+                    <li class="nav-item"><a href="#blog">Blog</a></li>
+                    <li class="nav-item"><a href="#ser">Service</a></li>
+                    <li class="nav-item"><a href="#food">Liên Hệ </a></li>
+                    <li class="nav-item">
+                        @if (!SignInManager.IsSignedIn(User))
+{
+                        <a asp-area="Identity" asp-page="/Account/Login">Đặt lịch hẹn </a>
+}else{
+     <a asp-controller="User" asp-action="UserRegisterTicket">Đặt lịch hẹn </a>
+}
+                    </li>
+                </ul>
+            </div>
+
+            <div class="conten">
+                <div class="item">
+                    <h1>Phòng Khám Đa Khoa </h1>
+                    <p>Kể từ những ngày đầu tiên hoạt động, nhóm của chúng tôi đã tập trung vào việc xây dựng một dịch vụ y tế chất lượng cao.</p><br>
+                    <button>Đặt lịch ngay </button>
+                </div>
+                <div class="cgv" > <img src="~/image/nurse_doctor_2-1.png" width="85%" height="95%" alt="" class="item2"></div>
+            </div>
+            
+            <img class="a" src="image/Clinika-pattern_top.png"  width="100%" height="30%" alt="">
+        </div>
+
+        
+        <div class="about" id="about">
+            <div class="wis"><img src="~/image/home_img_wrap.png" width="90%" height="90%" alt="" class="imgl"></div>
+            <div class="box">
+                <img src="~/image/Clinika-About_title.png"  width="100%" height="20%" alt="">
+                <h2>Phòng khám y tế tốt nhất, đầy đủ dịch vụ chăm sóc sức khỏe </h2><br>
+                <p>Kể từ những ngày đầu tiên hoạt động, nhóm của chúng tôi đã tập trung vào việc xây dựng một dịch vụ y tế chất lượng cao.</p><br>
+                <button>Đặt lịch ngay </button>
+            </div>
+        </div>
+            
+        
+
+        <div class="benefit" id="blog">
+            <img src="~/image/Clinika-pattern-bottom.png"  width="100%" height="20%" alt="">
+            <div class="nav">
+                <div class="cont">
+                    <img src="~/image/Clinika-Title_benefit.png" width="90%" height="20%" alt="">
+                    <h2>Khám sức khỏe chuyên khoa phù hợp với bệnh nhân </h2><br>
+                    <div class="sev">
+                        <div class="slide">
+                            <img src="~/image/Clinka-service-1.png" width="40%" height="40%" alt=""><br><br>
+                            <h4>5 Chi nhánh cả nước</h4><br>
+                            <span>Cơ sở vật chất bệnh viện đạt chuẩn Quốc tế</span>
+                        </div>
+                        <div class="slide">
+                            <img src="~/image/Clinka-service-2.png" width="40%" height="40%" alt=""><br><br>
+                            <h4>Chi phí hợp lý</h4><br>
+                            <span>Giá thành hợp lý với thu nhập của khách hàng</span>
+                        </div>
+                        <div class="slide">
+                            <img src="~/image/Clinika-service-3.png" width="40%" height="40%" alt=""><br><br>
+                            <h4>Bác sĩ giàu kinh nghiệm</h4><br>
+                            <span>Đội ngũ bác sĩ có bằng cấp, uy tín, kinh nghiệm</span>
+                        </div>
+                        <div class="slide">
+                            <img src="~/image/Clinka-service-4.png" width="40%" height="40%" alt=""><br><br>
+                            <h4>+5000 khách hàng</h4><br>
+                            <span>Nhiều khách hàng hài lòng về chất lượng</span>
+                        </div>
+                    </div>
+                </div>
+              <div class="wis"><img src="~/image/Clinika-bebeftis-image-1-768x801.png" width="90%" height="100%" alt=""></div>
+            </div>
+            <img class="a" src="image/Clinika-pattern_top.png"  width="100%" height="15%" alt="">
+        </div>
+
+
+        <div class="facitity" id="khoa">
+            <div class="big">
+                <div class="top">
+                    <img src="~/image/Clinika-Title_facility-768x220.png" width="40%" height="15%" alt="">
+                    <h2>Những điều đặc biệt ở Clinika</h2>
+                    <p>Donec pulvinar, eros quis convallis vestibulum, neque turpis
+                        iaculis mi, in ultrices nisl magna ut leo</p>
+                </div>
+                <div class="center">
+                    <div class="inside " >
+                        <div class="box-size active" data-target="#Cadio" data-aos="fade-up">
+                            <img src="~/image/icon1.png" width="30%" height="70%" alt="" >
+                            <h5>Tim mạch</h5>
+                        </div>
+                        <div class="box-size" data-target="#rang" data-aos="fade-up">
+                            <img src="~/image/icon2-500x450.png"width="30%" height="70%" alt="">
+                            <h5>Khoa răng hàm mặt </h5>
+                        </div>
+                        <div class="box-size" data-target="#phong" data-aos="fade-up" >
+                            <img src="~/image/icon3.png" width="30%" height="70%" alt="">
+                            <h5>Phóng xạ học </h5>
+                        </div>
+                        <div class="box-size" data-target="#than" data-aos="fade-up">
+                            <img src="~/image/icon4.png"width="30%" height="70%" alt="">
+                            <h5>Thần kinh học </h5>
+                        </div>
+                        <div class="box-size" data-target="#nhan" data-aos="fade-up">
+                            <img src="~/image/icon5-500x450.png" width="30%" height="70%" alt="">
+                            <h5>Nhãn khoa </h5>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="box-big active" id="Cadio" >
+                    <img src="~/image/cardiology.jpg" width="35%" height="35%" alt="">
+                    <div >
+                        <h4>Tim mạch</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non leo nunc. Vivamus lacinia massa mort sagittis, quisequat augue rhoncus. Phasellus varius quam quis ligula congue, eu aliquam eros feugiat. Bibendum số nguyên mauris euismod ex cursus, trong tiện ích mở rộng</p>
+                    </div>
+                </div>
+                <div class="box-big" id="rang">
+                    <img src="~/image/stomatology.png" width="35%" height="35%" alt="">
+                    <div >
+                        <h4>Khoa răng hàm mặt</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non leo nunc. Vivamus lacinia massa mort sagittis, quisequat augue rhoncus. Phasellus varius quam quis ligula congue, eu aliquam eros feugiat. Bibendum số nguyên mauris euismod ex cursus, trong tiện ích mở rộng</p>
+                    </div>
+                </div>
+                <div class="box-big" id="phong">
+                    <img src="~/image/radiology_clinika.png" width="35%" height="35%" alt="">
+                    <div >
+                        <h4>Phóng xạ học </h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non leo nunc. Vivamus lacinia massa mort sagittis, quisequat augue rhoncus. Phasellus varius quam quis ligula congue, eu aliquam eros feugiat. Bibendum số nguyên mauris euismod ex cursus, trong tiện ích mở rộng</p>
+                    </div>
+                </div>
+                <div class="box-big" id="than">
+                    <img src="~/image/neurology.png" width="35%" height="35%" alt="">
+                    <div >
+                        <h4>Thần kinh học</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non leo nunc. Vivamus lacinia massa mort sagittis, quisequat augue rhoncus. Phasellus varius quam quis ligula congue, eu aliquam eros feugiat. Bibendum số nguyên mauris euismod ex cursus, trong tiện ích mở rộng</p>
+                    </div>
+                </div>
+                <div class="box-big" id="nhan">
+                    <img src="~/image/opthalmology.png" width="35%" height="35%" alt="">
+                    <div >
+                        <h4>Nhãn khoa</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non leo nunc. Vivamus lacinia massa mort sagittis, quisequat augue rhoncus. Phasellus varius quam quis ligula congue, eu aliquam eros feugiat. Bibendum số nguyên mauris euismod ex cursus, trong tiện ích mở rộng</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="both" id="ser">
+            <img src="~/image/Clinika-pattern-bottom.png"  width="100%" height="20%" alt="">
+            <div class="top">
+                <img src="~/image/Clinika-Title_services.png" width="40%" height="15%" alt="">
+                <h2>Dịch vụ do Clinika cung cấp</h2>
+                <p class="text">Đội ngũ bác sĩ chuyên gia đầu ngành của phòng khám chúng tôi! Gặp gỡ nhân viên của chúng tôi và thăm chúng tôi cho vấn đề tiếp theo của bạn!</p>
+            </div>
+            <div class="service">
+                    <div class="box-a">
+                      <img src="~/image/clinika_medical-500x500.png" width="90px" height="70px" alt=""><br><br>
+                      <h4>Xét nghiệm máu</h4><br>
+                      <span>Đưa ra các chiến lược sinh tồn đôi bên cùng có lợi để …</span>
+                  </div>
+                  <div class="box-a">
+                    <img src="~/image/Teeth-Whitening-500x500.png" width="90px" height="70px" alt=""><br><br>
+                    <h4>Làm trắng răng</h4><br>
+                    <span>Đưa ra các chiến lược sinh tồn đôi bên cùng có lợi để …</span>
+                  </div>
+                  <div class="box-a">
+                    <img src="~/image/STD_Examination-500x500.png" width="90px" height="70px" alt=""><br><br>
+                    <h4>Xét nghiệm PCR</h4><br>
+                    <span>Đưa ra các chiến lược sinh tồn đôi bên cùng có lợi để …</span>
+                  </div>
+            </div>
+            <img class="a" src="image/Clinika-pattern_top.png"  width="100%" height="15%" alt="">
+        </div>
+
+        
+        <div class="facitity">
+                <div class="top">
+                    <img src="~/image/Clinika-Title_facility-768x220.png" width="40%" height="15%" alt="">
+                    <h2>Đối tác thương hiệu của chúng tôi</h2>
+                    <p>Đội ngũ bác sĩ chuyên gia đầu ngành của phòng khám chúng tôi! Gặp gỡ nhân viên của chúng tôi và thăm chúng tôi cho vấn đề tiếp theo của bạn!</p>
+                </div> 
+                <ul class="bind">
+                    <li><img src="~/image/partener_1.png" width="75%"  height="75%"alt=""></li>
+                    <li><img src="~/image/partener_3-300x155.png" width="75%"  height="75%" alt=""></li>
+                    <li><img src="~/image/partener_4-300x61.png" width="75%"  height="75%" alt=""></li>
+                    <li><img src="~/image/partener_5.png" width="75%"  height="75%" alt=""></li>
+                    <li><img src="~/image/partener_6-300x91.png" width="75%"  height="75%" alt=""></li>
+                    <li><img src="~/image/partener_2.png" width="75%"  height="75%" alt=""></li>
+                </ul>               
+        </div>
+
+        <div class="footer" id="food">
+            <div class="fod">
+                <div class="foddy">
+                    <h3>đường dẫn nhanh</h3>
+                    <p>Về phòng khám của chúng tôi</p>
+                    <p>Thành viên của chúng tôi</p>
+                    <p>Dịch vụ của chúng tôi</p>
+                    <p>Tin tức mới nhất </p>
+                    <p>Liên lạc </p>
+                </div>
+
+                <div class="foddy">
+                    <h3>Nhận Clinika</h3>
+                    <p>Về phòng khám của chúng tôi</p>
+                    <p>Thành viên của chúng tôi</p>
+                    <p>Dịch vụ của chúng tôi</p>
+                    <p>Tin tức mới nhất </p>
+                    <p>Liên lạc </p>
+                </div>
+
+                <div class="foddy">
+                    <h3>Đường dẫn nhanh</h3>
+                    <p>Về phòng khám của chúng tôi</p>
+                    <p>Thành viên của chúng tôi</p>
+                    <p>Dịch vụ của chúng tôi</p>
+                    <p>Tin tức mới nhất </p>
+                    <p>Liên lạc </p>
+                </div>
+
+                <div class="foddy">
+                    <h3>Tin tức mới nhất</h3>
+                    <p>Get updates, news or events on your mail.</p>
+                    <form action="">
+                        <input type="email" name="" id="" value="Enter your email">
+                        <button class="al">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <p class="dc">© Clinika Chủ đề của ModelTheme.com. This template design and develop by </p>
+        </div>
+    </div>
+    <script src="~/js/index.js"></script>
+</body>
+</html>
+

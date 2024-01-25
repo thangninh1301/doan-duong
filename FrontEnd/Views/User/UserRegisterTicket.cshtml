@@ -1,0 +1,145 @@
+﻿
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+@using Microsoft.AspNetCore.Identity
+@using BackEnd.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<div class="text-center">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <input type="text" placeholder="search" id="search1" />
+        <input hidden type="text" id="Id" value=@UserManager.GetUserAsync(User).Result.Id>
+        <h1>DANH SÁCH ĐĂNG KÝ KHÁM BỆNH</h1>
+        <p>
+
+            <button type="button" class="btn btn-primary" data-bind="click: $root.createRegister">Create RegisterTicket</button>
+        </p>
+        <div>
+
+            <table class="table" id="">
+                <tr>
+                    <td>Triệu Chứng</td>
+                    <td>Ngày đến khám</td>
+                    <td>Thoi gian khám</td>
+                    <td>Ngày tạo</td>
+                    <td>Trạng thái</td>
+                    <td></td>
+                </tr>
+                <tbody id="search_table" data-bind="foreach:$root.arrays">
+                    <tr data-bind="style:{color: statusRegis > 0 ? 'red' : 'green'}">
+                        <td data-bind="text:symptomRegis"></td>
+                        <td data-bind="text:dateMeetRegis"></td>
+                        <td data-bind="text:timeMeetRegis"></td>
+                        <td data-bind="text:dateCreateRegis"></td>
+                        <td data-bind="text:statusRegis > 0 ? 'Đã xử lý': 'Chưa xủ lý'"></td>
+                        <td>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" data-bind="click: $root.showDetail">Xem</button>
+                            <button type="button" class="btn btn-primary" data-bind="click: $root.delete, style:{visibility: statusRegis > 0 ? 'hidden' : 'visible'}">Xóa</button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div id="modal" class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Kết quả khám</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="mb-3">
+                            <h3>Phiếu hẹn khám</h3>
+                            <table class="table">
+                                <tr>
+                                    <td>Thời gian gặp</td>
+                                    <td>Khoa</td>
+                                    <td>Ngày đến khám</td>
+                                    <td>Lời nhắc</td>
+                                    <td>Bác sĩ điều trị</td>
+
+                                </tr>
+                                <tr>
+                                    <td id="timeMeetApoint"></td>
+                                    <td id="departmentApoint"></td>
+                                    <td id="datemeetApoint"></td>
+                                    <td id="description"></td>
+                                    <td id="Doctor1"></td>
+
+                                </tr>
+                            </table>
+                        </div>
+                       
+                        <div class="mb-3">
+                            <h3> Kết quả khám</h3>
+                            <table class="table">
+                                <tr>
+                                    <td>Chuẩn đoán</td>
+                                    <td>Trị liệu</td>
+                                    <td>Ngày tạo</td>
+
+                                </tr>
+
+                                <tr>
+                                    <td id="diagnostic"></td>
+                                    <td id="therapyRegiment"></td>
+                                    <td id="dateCreate"></td>
+
+                                </tr>
+
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="myModel" class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Phiếu đăng kí khám bệnh</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="col-form-label" for="symptom">Triệu chứng</label>
+                            <input class="form-control" type="text" id="symptom" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label" for="dateMeet">Ngày gặp</label>
+                            <input class="form-control" type="date" id="dateMeet" />
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" @*data-bind="click:$root.save"*@>Create</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <script>
+
+        </script>
+        @section Scripts {
+
+            <script src="~/JsUsers/UserRegisterTicket.js"></script>
+        }
+    }
+
+</div>

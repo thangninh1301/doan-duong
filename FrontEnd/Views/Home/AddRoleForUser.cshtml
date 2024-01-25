@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "AddRoleForUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 align="center">Cập Nhật Quyền</h1>
+
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    IdUser
+                <th>
+                    Tên User
+                </th>
+                <th>
+                    Tên Quyền
+                </th>
+
+                <th>
+                    Lựa chọn
+                </th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach:$root.arrays">
+            <tr>
+                <td data-bind="text:userId">
+                </td>
+                <td data-bind="text:userName">
+                </td>
+                <td data-bind="text:roles">
+                </td>
+                <td>
+                    <button id="Update" data-bind="click:$root.Update">Edit</button> |
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="modal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <ul data-bind="foreach:roles1">
+                            <li>
+                                <label  data-bind="text: name"></label>
+                                <input type="checkbox"
+                                       data-bind=" value: name,checked: $parent.selectedRoles">
+                            </li>
+
+                        </ul>
+                  
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bind="click:$root.save">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+@section Scripts{
+
+<script src="~/js/admin/AddRole.js"></script>
+    }
+
+

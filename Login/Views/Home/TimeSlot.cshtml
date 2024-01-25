@@ -1,0 +1,104 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+<script>
+    const backendUrl = "https://backend-btl-duong.mooo.com";
+</script>
+
+@{ ViewData["Title"] = "TimeSlot";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h1>Admin: Quản Lý Khung Giờ</h1>
+
+<p>
+
+    <button class="btn btn-primary" id="Create" data-bind="click:$root.Create">Tạo Mới</button>
+
+</p>
+<div class="">
+    <input type="date" id="inputDate" />
+    <input type="text" id="myInput" placeholder="Tìm Kiếm" />
+    <button class="btn-group-circle btn btn-primary" id="btnSearch" data-bind="click: $root.search" >Tìm kiếm</button>
+    <button class="btn-group-circle btn btn-primary" id="btnSearch" data-bind="click: $root.click" >Tất Cả</button>
+</div>
+<div class="card-body">
+    <table class="table" id="datatablesSimple">
+        <thead>
+            <tr>
+                <th>
+                    Mã:
+                </th>
+                <th>
+                    Mô Tả:
+                </th>
+                <th>
+                    Số lượng bệnh nhân tối đa
+                </th>
+                <th>
+                    Xóa Chưa:
+                </th>
+                <th>
+                    Ngày Tạo:
+                </th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach:$root.array">
+            <tr>
+                <td data-bind="text:id">
+                </td>
+                <td data-bind="text:decription">
+                </td>
+                <td data-bind="text:max">
+                </td>
+                <td data-bind="text:deleted">
+                </td>
+                <td data-bind="text:dateCreate">
+                </td>
+                <td>
+                    <button class="btn btn-primary" id="Update" data-bind="click:$root.Update">Sửa</button> |
+                    <button class="btn btn-primary" id="Details">Chi Tiết</button> |
+                    <button class="btn btn-danger" id="Delete" data-bind="click:$root.Delete">Xóa</button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<div id="modal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Danh sách khung giờ </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="mb-3">
+                    <label class="col-form-label" for="decription" style="font-weight:bold">Mô Tả </label> <input class="form-control" type="text" id="decription"><br />
+                </div>
+                <div class="mb-3">
+                    <label class="col-form-label" for="datecreate" style="font-weight:500" readonly>Ngày Tạo: </label> <input class="form-control" type="datetime" id="datecreate" /><br />
+
+                </div>
+                <div class="mb-3">
+                    <label class="col-form-label" for="max" style="font-weight:500" readonly>Số lượng bệnh nhân tối đa: </label> <input class="form-control" type="number" id="max" /><br />
+
+                </div>
+                <div class="mb-3">
+                    <label class="col-form-label" for="" style="font-weight:500">Trạng thái: </label><br />
+                    <div style="display:flex;justify-content:space-around">
+                        <label class="col-form-label" style="font-weight:500">Đã xóa: <input type="radio" id="yes" name="delete" value="yes"></label>
+                        <label class="col-form-label" style="font-weight:500">Chưa xóa:<input checked type="radio" id="no" name="delete" value="no"> </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng </button>
+                    <button type="button" class="btn btn-primary" data-bind="click:$root.save">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+    <script src="~/js/admin/TimeSlot.js"></script>
+}

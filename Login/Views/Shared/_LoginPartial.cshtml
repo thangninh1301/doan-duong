@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using BackEnd.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="navbar-header" style="display: flex;justify-content: space-between;justify-items: center;list-style: none;margin-right: 20px;margin-top: 10px;">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item"style="margin-right: 30px;">
+        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+            <img src="/assets/admin/layout5/img/avatar1.jpg" alt="" style="width:30px;height:30px">
+            </a>
+            <br>
+            <span class="label-icon" >Hello @UserManager.FindByEmailAsync(User.Identity.Name).Result.LastName!</span>
+    </li>
+    <li class="nav-item">
+        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button  type="submit" class="nav-link btn btn-link text-dark">Đăng xuất</button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="nav-item" style="margin-right: 30px;">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Đăng ký</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Đăng nhập</a>
+    </li>
+}
+</ul>

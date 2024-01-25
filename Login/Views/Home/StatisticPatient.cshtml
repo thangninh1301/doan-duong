@@ -1,0 +1,56 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+<script>
+    const backendUrl = "https://backend-btl-duong.mooo.com";
+</script>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+@using Microsoft.AspNetCore.Identity
+@using BackEnd.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<div class="text-center">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <input hidden type="text" id="admin" value=@UserManager.GetUserAsync(User).Result.Id>
+
+
+        <div>
+            <h1>Thống kê bệnh nhân theo bác sĩ</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td style="font-weight:bold">Bác sĩ</td>
+                        <td style="font-weight:bold"> số phiếu hẹn</td>
+                        <td style="font-weight:bold"> số bệnh nhân</td>
+
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach:$root.arrays">
+                    <tr>
+
+                        <td data-bind="text:nameDoctor"></td>
+                        <td data-bind="text:apoint"></td>
+                        <td data-bind="text:patient"></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+
+
+
+        @section Scripts {
+
+            <script src="~/js/admin/Statistics/StatisticDoctor.js"></script>
+        }
+    }
+
+</div>

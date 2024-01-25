@@ -1,0 +1,141 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+<script>
+    const backendUrl = "https://backend-btl-duong.mooo.com";
+</script>
+@{
+    ViewData["Title"] = "ApointmentTickerAdmin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Admin: Quản Lý Phiếu Hẹn</h2>
+
+
+
+
+<div class="">
+    <input type="date" id="inputDate" />
+    <input type="text" id="myInput" placeholder="Tìm Kiếm" />
+    <button class="btn-group-circle btn btn-primary" id="btnSearch" data-bind="click: $root.search">Tìm kiếm</button>
+    <button class="btn-group-circle btn btn-primary" id="btnSearch" data-bind="click: $root.click">Tất Cả</button>
+</div>
+<div class="card-body">
+    <table class="table" id="datatablesSimple">
+        <thead>
+            <tr>
+                <th>Mã Phiếu Hẹn </th>
+                <th>Giờ Hẹn</th>
+                <th>Bác sĩ</th>
+                <th>Phòng ban</th>
+                <th>Mã Phiếu đăng kí</th>
+                <th>Ngày hẹn Gặp</th>
+                <th>Ngày tạo</th>
+                <th>Mô Tả</th>
+                <th>Đã xóa</th>
+                <th>Trạng thái</th>
+                <th></th>
+
+
+            </tr>
+        </thead>
+        <tbody data-bind="foreach:$root.arrays">
+            <tr data-bind="style:{color: status ==0 ? 'red' :status==1? 'green':'blue'}">
+                <td data-bind="text:id">IdTimeMeet</td>
+                <td data-bind="text:decriptionTimeMet">IdTimeMeet</td>
+                <td data-bind="text:doctor"></td>
+                <td data-bind="text:nameDepartment"></td>
+                <td data-bind="text:idRegisterTicket">IdRegisterTicket</td>
+                <td data-bind="text:dateMeet">DateMeet</td>
+                <td data-bind="text:dateCreate">DateCreate</td>
+                <td data-bind="text:decription">Decription</td>
+                <td data-bind="text:deleted">Deleted</td>
+                <td data-bind="text:status==0?'chưa gửi đi':status==1?'chờ bệnh nhân phản hồi':status==2 ? 'đã có kết quả':'bệnh nhân đã xác nhận'"></td>
+
+                <td>
+                    <!-- ko if: status==0||status==3-->
+                    <button class="btn btn-primary" data-bind="click:$root.delete@*,style:{visibility:status > 0 ? 'hidden':'visible'}*@">Xóa</button>
+                    <button class="btn btn-primary" data-bind="click:$root.Update @*,style:{visibility:status > 0 ? 'hidden':'visible'}*@">Sửa</button>
+                    <!--/ko-->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div id="modal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Modal title</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="col-form-label" for="idTimeMeet" style="font-weight:bold">Khung giờ: </label>
+                    <select class="form-control" id="idTimeMeet" data-bind="options: $root.arrayTimeSlot,
+                                      optionsText: 'decription',
+                                      optionsValue: 'id',
+                                      optionsCaption: 'chọn',
+                                    " disabled>
+                    </select><br />
+                </div>
+                <div class="mb-3">
+
+                    <label class="col-form-label" for="dateMeet" style="font-weight:bold">Ngày hẹn: </label>
+                    <input class="form-control" type="date" id="dateMeet" readonly /><br />
+
+                </div>
+                <div class="mb-3">
+                    <label class="col-form-label" for="idDepartment" style="font-weight:bold">Phòng ban: </label>
+                    <select class="form-control" id="idDepartment" data-bind="options: $root.arrayDepartment,
+                                      optionsText: 'name',
+                                      optionsValue: 'id',
+                                      optionsCaption: 'chọn',
+                                    ">
+                    </select><br />
+                </div>
+                <div class="mb-3">
+                    <label class="col-form-label" for="idDoctor" style="font-weight:bold">Bác sĩ: </label>
+
+                    <select class="form-control" id="idDoctor" data-bind="options: $root.arrayDoctor,
+                                      optionsText: 'lastName',
+                                      optionsValue: 'id',
+                                      optionsCaption: 'chọn',
+                                    " >
+                    </select><br />
+                </div>
+                @* <div class="mb-3" hidden>
+                <label class="col-form-label" for="idRegisterTicket">Mã phòng ban</label> <input class="form-control" type="number" id="idRegisterTicket"><br />
+                </div>*@
+                
+
+
+                <div class="mb-3">
+                    <label class="col-form-label" for="decription" style="font-weight:bold">Mô Tả: </label> <input class="form-control" type="text" id="decription"><br />
+                </div>
+                <div class="mb-3">
+                    <label class="col-form-label" style="font-weight:bold">Trạng thái: </label>
+                    <div style="display:flex;justify-content:space-around">
+                        <label class="col-form-label" style="font-weight:bold">Đã xóa: <input type="radio" id="yes" name="delete" value="yes"></label>
+                        <label class="col-form-label" style="font-weight:bold">Chưa xóa: <input checked type="radio" id="no" name="delete" value="no"></label>
+                    </div>
+                </div>
+
+                @*  <div class="mb-3" hidden>
+                <label class="col-form-label" for="dateCreate">Trạng thái: </label> <input class="form-control" type="text" id="status" /><br />
+                </div>*@
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary" data-bind="click:$root.save">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @section scripts {
+        <script src="~/js/admin/ApointmentTicket.js"></script>
+    }
+
+
+    </div>
+

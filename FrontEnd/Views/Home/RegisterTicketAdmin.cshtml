@@ -1,0 +1,110 @@
+﻿
+@{ ViewData["Title"] = "RegisterTicket";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+<div class="">
+    <input type="date" id="inputDate" />
+    <input type="text" id="myInput"/>
+    <button class="btn-group-circle" id="btnSearch" data-bind="click: $root.search">Tìm kiếm</button>
+    <button class="btn-group-circle" id="btnSearch" data-bind="click: $root.click">Tất Cả</button>
+</div>
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>Mã phiếu</th>
+            <th>Tên bệnh nhân</th>
+            <th>Triệu chứng</th>
+            <th>Ngày đến khám</th>
+
+            <th>Khoảng thời gian</th>
+
+            <th>Trạng thái</th>
+
+            <th>Tạo phiếu hẹn</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach:$root.arrays" id="myTable">
+        <tr data-bind="style:{color: statusRegis > 0 ? 'blue' : 'red'}">
+            <td data-bind="text:idRegis"></td>
+            <td data-bind="text:name"></td>
+            <td data-bind="text:symptom"></td>
+            <td data-bind="text:dateMeet"></td>
+            <td data-bind="text:desTimeSlot"></td>
+            <td data-bind="text:  statusRegis > 0 ? `Đã xử lý` : `Chưa xử Lý`"></td>
+            <td>
+                <button data-bind="click: $root.insert">Create</button>
+
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+<div id="modal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Phiếu hẹn</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3" hidden>
+                    <label class="col-form-label" for="idApointment">idApointment: </label> <input class="form-control" type="number" id="idApointment" /><br />
+                </div>
+                <div class="mb-3">
+                    <label class="col-form-label" for="idDepartment">Phòng ban: </label>
+                    <select id="idDepartment" data-bind="options: $root.arrayDepartment,
+                                    optionsText: 'name',
+                                      optionsValue: 'id',
+                                      optionsCaption: 'chọn',
+                                    ">
+                    </select><br />
+                </div>
+                <div class="mb-3">
+                    <label class="col-form-label" for="idDoctor">Bác sỹ: </label>
+                    <select id="idDoctor" data-bind="options: $root.arrayDoctor,
+                                      optionsText: 'lastName',
+                                      optionsValue: 'id',
+                                      optionsCaption: 'chọn',
+                                    ">
+                    </select><br />
+                </div>
+                 <div class="mb-3">
+                            <label class="col-form-label" for="dateMeet">Ngày gặp</label>
+                            <input class="form-control" type="datetime" id="dateMeet" />
+                        </div>
+                 <div class="mb-3">
+                            <label class="col-form-label" for="idTimeMeet">Thời gian gặp </label> 
+                            <select id="idTimeMeet" data-bind="options: $root.arrayTimeSlot,
+                                      optionsText: 'decription',
+                                      optionsValue: 'id',
+                                      optionsCaption: 'chọn khoảng thời gian',
+                                    ">
+                            </select>
+                        </div>
+                <div class="mb-3" hidden>
+                    <label class="col-form-label">Đã xóa: </label>
+                    <label class="col-form-label">Có: </label><input type="radio" id="yes" name="delete" value="yes">
+                    <label class="col-form-label">Không: </label><input checked type="radio" id="no" name="delete" value="no">
+                </div>
+                <div class="mb-3">
+                    <label class="col-form-label" for="decription">Mô Tả: </label> <input class="form-control" type="text" id="decription"><br />
+                </div>
+                <div class="mb-3" >
+                    <label class="col-form-label">Đã xử lý: </label>
+                  <input name="Test" type="checkbox" id="status"/>Đã xử lý            
+                   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bind="click:$root.save">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/js/admin/RegisterTicketAdmin1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+}
+

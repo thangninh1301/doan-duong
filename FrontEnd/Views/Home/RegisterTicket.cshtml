@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewData["Title"] = "RegisterTicket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Tên bệnh nhân</th>
+            <th>Triệu chứng</th>
+            <th>Ngày đến khám</th>
+            <th hidden>id thời gian</th>
+            <th>Khoảng thời gian</th>
+            <th>Ngày đăng kí</th>
+            <th>Trạng thái</th>
+            <th hidden>Deleted</th>
+            <th>Tạo phiếu hẹn</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach:$root.arrays">
+        <tr>
+            <td data-bind="text:id"></td>
+            <td data-bind="text:idPatient"></td>
+            <td data-bind="text:symptom"></td>
+            <td data-bind="text:dateMeet"></td>
+            <td data-bind="text:idTimeMeet" hidden></td>
+            <td data-bind="text:nameTimeMeet"></td>
+            <td data-bind="text:dateCreate"></td>
+            <td data-bind="text:status"></td>
+            <td hidden data-bind="text:deleted"></td>
+            <td>
+                <button data-bind="click: $root.insert">Create|</button>
+
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+<div id="modal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3" hidden>
+                    <label class="col-form-label" for="idApointment">idApointment: </label> <input class="form-control" type="number" id="idApointment" /><br />
+                </div>
+                <div class="mb-3">
+                    <label class="col-form-label" for="idDepartment">Phòng ban: </label>
+                    <select id="idDepartment" data-bind="options: $root.arrayDepartment,
+                                      optionsText: 'name',
+                                      optionsValue: 'id',
+                                      optionsCaption: 'chọn',
+                                    ">
+                    </select><br />
+                </div>
+                <div class="mb-3">
+                    <label class="col-form-label" for="status">Trạng thái: </label> <input class="form-control" type="number" id="status" /><br />
+                </div>
+                <div class="mb-3">
+                    <label class="col-form-label" for="decription">Mô Tả: </label> <input class="form-control" type="text" id="decription"><br />
+                </div>
+                <div class="mb-3">
+                    <label class="col-form-label">Đã xóa: </label>
+                    <label class="col-form-label">Có: </label><input type="radio" id="yes" name="delete" value="yes">
+                    <label class="col-form-label">Không: </label><input checked type="radio" id="no" name="delete" value="no">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bind="click:$root.save">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/js/admin/RegisterTicketAdmin.js"></script>
+   
+}
+

@@ -1,0 +1,38 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+<script>
+    const backendUrl = "https://backend-btl-duong.mooo.com";
+</script>
+@{
+    ViewData["Title"] = "StatisticsDoctorByDepart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thống kê bác sỹ theo khoa</h2>
+
+<table class="table">
+    <thead>
+
+        <tr>
+            <th>Mã khoa</th>
+            <th>Tên khoa</th>
+            <th>Số bác sỹ</th>
+
+        </tr>
+    </thead>
+
+    <tbody data-bind="foreach:$root.arrays">
+        <tr>
+
+            <td data-bind="text:id"></td>
+            <td data-bind="text:nameDepart"></td>
+            <td data-bind="text:numDoctor"></td>
+
+        </tr>
+    </tbody>
+</table>
+
+@section Scripts {
+
+    <script src="~/js/admin/Statistics/StatisticsDoctorByDepart.js"></script>
+}

@@ -1,0 +1,9 @@
+.result-css tr > td{
+   text-align:left
+}
+.result-css tr td input{
+    width:400px
+}
+.result-css tr td textarea {
+    width: 400px
+}

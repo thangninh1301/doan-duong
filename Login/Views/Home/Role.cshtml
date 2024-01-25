@@ -1,0 +1,87 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+<script>
+    const backendUrl = "https://backend-btl-duong.mooo.com";
+</script>
+@{
+    ViewData["Title"] = "Role";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Admin: Quản Lý Quyền</h1>
+
+<p>
+
+    <button type="button" class="btn btn-primary" data-bind="click:$root.Create">Tạo Mới</button>
+</p>
+<div class="">
+    
+    <input type="text" id="myInput" placeholder="Tìm Kiếm" />
+    <button class="btn-group-circle btn btn-primary" id="btnSearch" data-bind="click: $root.search" >Tìm kiếm</button>
+    <button class="btn-group-circle btn btn-primary" id="btnSearch" data-bind="click: $root.click" >Tất Cả</button>
+</div>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Mã
+                <th>
+                    Tên quyền truy cập
+                </th>
+                <th>
+                    Tên phổ biến
+                </th>
+
+                <th>
+                    Lựa chọn
+                </th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach:$root.array">
+            <tr>
+                <td data-bind="text:id">
+                </td>
+                <td data-bind="text:name">
+                </td>
+                <td data-bind="text:normalizedName">
+                </td>
+                <td>
+                    <button class="btn btn-primary" id="Update" data-bind="click:$root.Update">Sửa</button> |
+                        <button class="btn btn-danger" id="Delete" data-bind="click:$root.Delete">Xóa</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="modal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Modal title</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="col-form-label" for="Id" style="font-weight:bold">Mã </label> <input class="form-control" type="text" id="id"><br />
+                    </div>
+                    <div class="mb-3">
+                        <label class="col-form-label" for="Tên quyền truy cập" style="font-weight:bold">Tên quyền truy cập </label> <input class="form-control" type="text" id="name"><br />
+                    </div>
+                    <div class="mb-3">
+                        <label class="col-form-label" for="Tên phổ biến" style="font-weight:bold">Tên phổ biến </label> <input class="form-control" type="text" id="normalizedName" /><br />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-primary" data-bind="click:$root.save">Lưu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts{
+
+    <script src="~/js/admin/Role.js"></script>
+}

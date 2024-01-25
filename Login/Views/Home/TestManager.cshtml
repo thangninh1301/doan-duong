@@ -1,0 +1,95 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+<script>
+    const backendUrl = "https://backend-btl-duong.mooo.com";
+</script>
+@{ ViewData["Title"] = "TestManage";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+<h1>Admin: Quản Lí Xét Nghiệm </h1>
+<p>
+    <button id="Create" data-bind="click:$root.Create" class="btn btn-primary">Tạo Mới</button>
+</p>
+<div class="">
+    <input type="date" id="inputDate" />
+    <input type="text" id="myInput" placeholder="Tìm Kiếm" />
+    <button class="btn-group-circle btn btn-primary" id="btnSearch" data-bind="click: $root.search">Tìm kiếm</button>
+    <button class="btn-group-circle btn btn-primary" id="btnSearch" data-bind="click: $root.click">Tất Cả</button>
+</div>
+<div class="card-body">
+    <table class="table" id="datatablesSimple">
+        <thead>
+            <tr>
+                <th>
+                    Mã:
+                <th>
+                    Tên:
+                </th>
+                <th>
+                    Mô Tả:
+                </th>
+                <th>
+                    Ngày Tạo:
+                </th>
+                
+                <th>
+                    Lựa Chọn:
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach:$root.array">
+
+
+            <tr>
+                <td data-bind="text:id">
+                </td>
+                <td data-bind="text:name">
+                </td>
+                <td data-bind="text:desciption">
+                </td>
+                <td data-bind="text:datecreate">
+                </td>
+                
+                <td>
+                    <button class="btn btn-primary" id="Update" data-bind="click:$root.Update">Sửa</button>|
+                    <button class="btn btn-primary" id="Details">Chi Tiết</button>|
+                    <button class="btn btn-danger" id="Delete" data-bind="click:$root.Delete">Xóa</button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<div id="modal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Modal title</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="col-form-label" for="name" style="font-weight:bold">Tên: </label>  <input class="form-control" type="text" id="name"><br />
+                </div>
+                <div class="mb-3">
+                    <label class="col-form-label" for="desciption" style="font-weight:bold">Mô Tả </label> <input class="form-control" type="text" id="desciption"><br />
+                </div>
+                <div class="mb-3">
+                    <label class="col-form-label" for="datecreate" style="font-weight:bold">Ngày Tạo: </label>
+                    <input class="form-control" type="date" id="datecreate" readonly /><br />
+
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary" data-bind="click:$root.save">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+
+    <script src="~/js/admin/TestManager.js"></script>
+}
+

@@ -1,0 +1,87 @@
+﻿
+
+@{
+    ViewData["Title"] = "TimeSlot";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>TimeSlot</h1>
+
+<p>
+
+    <button id="Create" data-bind="click:$root.Create">Create New</button>
+
+</p>
+<div class="card-body">
+    <table class="table" id="datatablesSimple">
+        <thead>
+            <tr>
+                <th>
+                    Id:
+                </th>
+                <th>
+                    Decription:
+                </th>
+                <th>
+                    Deleted:
+                </th>
+                <th>
+                    DateCreate:
+                </th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach:$root.array">
+            <tr>
+                <td data-bind="text:id">
+                </td>
+                <td data-bind="text:decription">
+                </td>
+                <td data-bind="text:deleted">
+                </td>
+                <td data-bind="text:dateCreate">
+                </td>
+                <td>
+                    <button class="btn btn-primary" id="Update" data-bind="click:$root.Update">Edit</button> |
+                    <button class="btn btn-primary"  id="Details">Details</button> |
+                    <button class="btn btn-primary" id="Delete" data-bind="click:$root.Delete">Delete</button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    </div>
+    <div id="modal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="mb-3">
+                        <label class="col-form-label" for="decription">decription </label> <input class="form-control" type="text" id="decription"><br />
+                    </div>
+                    <div class="mb-3">
+                        <label class="col-form-label" for="datecreate">datecreate: </label> <input class="form-control" type="datetime" id="datecreate" /><br />
+                    </div>
+                    <div class="mb-3">
+                        <label class="col-form-label" for="">deleted: </label><br />
+                        <label class="col-form-label">yes: </label><input  type="radio" id="yes" name="delete" value="yes">
+                        <label class="col-form-label">no: </label><input  checked type="radio" id="no" name="delete" value="no">
+                    </div>
+
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bind="click:$root.save">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @section Scripts{
+
+        <script src="~/js/admin/TimeSlot.js"></script>
+    }

@@ -1,0 +1,106 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+<script>
+    const backendUrl = "https://backend-btl-duong.mooo.com";
+</script>
+@{
+    ViewData["Title"] = "Home Page";
+}
+@using Microsoft.AspNetCore.Identity
+@using BackEnd.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<h1>Bác Sỹ Xét Nghiệm: Danh sách phiếu xét nghiệm</h1>
+<div class="">
+    <input type="date" id="inputDate" />
+    <input type="text" id="myInput" placeholder="Tìm Kiếm" />
+    <button class="btn-group-circle btn btn-primary" id="btnSearch" data-bind="click: $root.search">Tìm kiếm</button>
+    <button class="btn-group-circle btn btn-primary" id="btnSearch" data-bind="click: $root.click">Tất Cả</button>
+</div>
+<div class="text-center">
+    @if (SignInManager.IsSignedIn(User))
+    {
+
+        <input hidden type="text" id="doctorTestId" value=@UserManager.GetUserAsync(User).Result.Id>
+        <div style="width:100%">
+            
+                  
+                        <div>
+
+                            <table class="table" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Mã bệnh nhân</th>
+                                        <th>Bệnh nhân</th>
+                                        <th>Email</th>
+                                        <th>Số điện thoạt</th>
+
+                                        <th>Chuẩn đoán</th>
+                                        <th> Tệp đính kèm</th>
+                                        <th>Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="search_table" data-bind="foreach:$root.arrays">
+
+                                    <tr>
+                                        <td data-bind="text:idPatient"></td>
+                                        <td data-bind="text:namePati"></td>
+                                        <td data-bind="text:email"></td>
+                                        <td data-bind="text:phone"></td>
+                                        <td data-bind="text:diagnostic"></td>
+                                        <td><a target="_blank" data-bind="attr: { href: 'http://127.0.0.1:8887/'+url}">Click here</a></td>
+                                        <!---ko:if diagnostic ==null-->
+                                        <td>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-bind="click: $root.listResult">Tạo kết quả</button>
+
+                                        </td>
+                                        <!--/ko-->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="modal" class="modal" tabindex="-1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title">Modal title</h3>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+
+
+                                        
+
+                                        <div class="mb-3">
+                                            <label label class="col-form-label" style="font-weight:bold">File Đính Kèm</label>
+                                            <input id="url" class="form-control" type="file">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label label class="col-form-label" style="font-weight:bold">Chuẩn đoán</label>
+                                            <input id="diagnostic" class="form-control" type="text">
+                                        </div>
+
+                                       
+
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                        <button type="button" class="btn btn-primary" data-bind="click:$root.save">Lưu</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                
+           
+        </div>
+        
+    }
+</div>
+
+@section Scripts{
+
+    <script src="~/JsDoctorTest/TestregisterTicket.js"></script>
+}

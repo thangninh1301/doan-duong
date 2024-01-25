@@ -1,0 +1,131 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+<script>
+    const backendUrl = "https://backend-btl-duong.mooo.com";
+</script>
+@{
+    ViewData["Title"] = "DoctorManager";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    ViewData["Title"] = "User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Admin: Quản Lý Bác Sỹ Khám Bệnh </h2>
+
+<div class="">
+    
+    <input type="text" id="myInput" placeholder="Tìm Kiếm" />
+    <button class="btn-group-circle btn btn-primary" id="btnSearch" data-bind="click: $root.search" >Tìm kiếm</button>
+    <button class="btn-group-circle btn btn-primary" id="btnSearch" data-bind="click: $root.click" >Tất Cả</button>
+</div>
+<table class="table" id="myTable">
+
+    <thead>
+        <tr>
+            <th>Mã</th>
+            <th>Họ</th>
+            <th>Tên</th>
+            <th>Mã khoa</th>
+            <th>Tên Khoa khám bệnh</th>
+            <th>Tài Khoản</th>
+
+            <th>Số Điện Thoại</th>
+            <th>Xóa Chưa</th>
+            <th colspan="2">Lựa Chọn</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach:$root.arrays">
+        <tr>
+            <td data-bind="text:id">Alfreds Futterkiste</td>
+            <td data-bind="text:firstName">Maria Anders</td>
+            <td data-bind="text:lastName">Germany</td>
+            <td data-bind="text:idDepartment">Germany</td>
+            <td data-bind="text:nameDepart">Germany</td>
+            <td data-bind="text:userName">Germany</td>
+            <td data-bind="text:phoneNumber">Germany</td>
+            <td data-bind="text:deleted">Germany</td>
+            <td><button class="btn-group-circle btn btn-primary" data-bind="click:$root.update">Sửa</button></td>
+            <td><button class="btn-group-circle btn btn-danger" data-bind="click:$root.del">Xóa</button></td>
+        </tr>
+
+    </tbody>
+
+</table>
+
+<div id="modal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Modal title</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+
+                <div class="mb-3">
+                    <label label class="col-form-label" style="font-weight:bold" >Mã</label>
+                    <input id="id" disabled="disabled" class="form-control" >
+                </div>
+
+                <div class="mb-3">
+                    <label label class="col-form-label" style="font-weight:bold">Họ</label>
+                    <input id="firstName" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label label class="col-form-label" style="font-weight:bold">Tên</label>
+                    <input id="lastName" class="form-control">
+                </div>
+                
+                <div class="mb-3">
+                   
+                        <label label class="col-form-label" style="font-weight:bold">Tên khoa khám bệnh</label>
+
+                        <select id="idDepartment" class="form-control" data-bind="options:$root.arrayDepartment,optionsText:'name',
+                                                                                        optionsValue:'id', optionsCaption:'chon'">
+                        </select>
+                 
+                </div>
+                
+              
+                
+                <div class="mb-3">
+                    <label label class="col-form-label"  style="font-weight:bold">Tài Khoản</label>
+                    <input id="userName" disabled class="form-control">
+
+                </div>
+
+
+
+                <div class="mb-3">
+                    <label label class="col-form-label" style="font-weight:bold">Số Điện Thoại</label>
+                    <input id="phoneNumber" class="form-control">
+
+                </div>
+                <div class="mb-3">
+                    <label label class="col-form-label" style="font-weight:bold">Trạng thái xóa</label>
+                    <select id="deleted">
+                        <option>False</option>
+                        <option>True</option>
+                    </select>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" data-bind="click:$root.save">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/admin/DoctorManager.js"></script>
+}
+
+

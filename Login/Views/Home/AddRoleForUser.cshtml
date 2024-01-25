@@ -1,0 +1,88 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+<script>
+    const backendUrl = "https://backend-btl-duong.mooo.com";
+</script>
+@{
+    ViewData["Title"] = "AddRoleForUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 >Admin: Cập Nhật Quyền Cho Người Dùng</h2>
+
+<div class="">
+    <input type="date" id="inputDate" />
+    <input type="text" id="myInput" placeholder="Tìm Kiếm" />
+    <button class="btn-group-circle btn btn-primary" id="btnSearch" data-bind="click: $root.search" >Tìm kiếm</button>
+    <button class="btn-group-circle btn btn-primary" id="btnSearch" data-bind="click: $root.click" >Tất Cả</button>
+</div>
+
+<div>
+    <table class="table" id="myTable">
+        <thead>
+            <tr>
+                <th>
+                    Mã Người Dùng
+                <th>
+                    Tên Người Dùng
+                </th>
+                <th>
+                    Tên Quyền
+                </th>
+
+                <th>
+                    Lựa chọn
+                </th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach:$root.arrays">
+            <tr>
+                <td data-bind="text:userId">
+                </td>
+                <td data-bind="text:userName">
+                </td>
+                <td data-bind="text:roles">
+                </td>
+                <td>
+                    <button class="btn-group-circle btn btn-primary" id="Update" data-bind="click:$root.Update">Sửa</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="modal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Thêm quyền cho người dùng</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <ul data-bind="foreach:roles1">
+                            <li>
+                                <label data-bind="text: name" style="min-width:150px"></label>
+                                <input type="checkbox"
+                                       data-bind=" value: name,checked: $parent.selectedRoles">
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary" data-bind="click:$root.save">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+
+    <script src="~/js/admin/AddRole.js"></script>
+}
+
+

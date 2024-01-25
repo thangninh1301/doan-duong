@@ -1,0 +1,133 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+<script>
+    const backendUrl = "https://backend-btl-duong.mooo.com";
+</script>
+@{
+    ViewData["Title"] = "RegisterTicket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Admin: Quản Lý Phiếu Đăng Kí</h2>
+<div class="" width="100%">
+    <input type="date" id="inputDate" />
+    <input type="text" id="myInput" placeholder="Tìm Kiếm" />
+    <button class="btn-group-circle btn btn-primary" id="btnSearch" data-bind="click: $root.search">Tìm kiếm</button>
+    <button class="btn-group-circle btn btn-primary" id="btnSearch" data-bind="click: $root.click">Tất Cả</button>
+</div>
+<table class="table" id="myTable" width="100%">
+    <thead>
+        <tr>
+            <th>Mã phiếu đăng ký</th>
+            <th>Tên bệnh nhân</th>
+            <th>Tiền sử</th>
+            <th>Triệu chứng</th>
+            <th>Ngày đến khám</th>
+            <th>Khoảng thời gian</th>
+            <th>Trạng thái</th>
+            <th>Trạng thái Xóa</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach:$root.arrays" id="myTable" >
+        <tr data-bind="style:{color: statusRegis ==1 ? 'blue' :statusRegis ==2 ? 'red':'Brown'}">
+            <td data-bind="text:idRegis"></td>
+            <td data-bind="text:name"></td>
+            <td data-bind="text:bgDisease"></td>
+            <td data-bind="text:symptom"></td>
+            <td data-bind="text:dateMeet"></td>
+            <td data-bind="text:desTimeSlot"></td>
+            <td data-bind="text: statusRegis == 1 ? `Đã xử lý` : statusRegis == 2 ? `Đã hủy` :`Chưa xử Lý`"></td>
+            <td data-bind="text: deleted"></td>
+
+            <td>
+                <!-- ko if: statusRegis != 2 -->
+                <button class="btn btn-primary" data-bind="click: $root.insert">
+                    <!-- ko if: statusRegis == 0 -->
+                    Tạo Phiếu hẹn
+                    <!-- /ko -->
+                    <!-- ko if: statusRegis == 1 -->
+                    Xem Phiếu hẹn
+                    <!-- /ko -->
+                </button>
+                <!-- /ko -->
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+<div id="modal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Phiếu hẹn</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="mb-3">
+                    <label class="col-form-label" for="idApointment" s>Mã phiếu hẹn: </label> <input class="form-control" type="number" id="idApointment" readonly /><br />
+                </div>
+                <div class="mb-3">
+
+                    <label class="col-form-label" for="dateMeet" style="font-weight:bold">Ngày gặp</label>
+                    <input class="form-control" type="date" id="dateMeet" readonly/>
+
+                </div>
+
+                <div class="mb-3">
+                    <label class="col-form-label" for="idTimeMeet" style="font-weight:bold">Thời gian gặp </label>
+@*                    <input class="form-control" type="text" id="idTimeMeet" readonly/>
+*@
+                    <select class="form-control" id="idTimeMeet" data-bind="options: $root.arrayTimeSlot,
+                                      optionsText: 'decription',
+                                      optionsValue: 'id',
+                                      optionsCaption: 'chọn khoảng thời gian',
+                                    "  disabled>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="col-form-label" for="idDepartment" style="font-weight:bold">Phòng ban: </label>
+                    <select class="form-control" id="idDepartment" data-bind="options: $root.arrayDepartment,
+                                    optionsText: 'name',
+                                      optionsValue: 'id',
+                                      optionsCaption: 'chọn',
+                                    event:{ change: $root.permissionChanged}
+                                    ">
+                    </select><br />
+                </div>
+                <div class="mb-3" data-bind="with:$root.doctor">
+                    <label class="col-form-label" for="idDoctor" style="font-weight:bold">Bác sỹ: </label>
+
+                    <input class="form-control" type="text" id="idDoctor" readonly data-bind="value:UserName" />
+
+                    <br />
+                </div>
+
+                <div class="mb-3" hidden>
+                    <label class="col-form-label" style="font-weight:bold">Trạng thái: </label>
+                    <div style="display:flex;justify-content:space-around">
+                        <label class="col-form-label" style="font-weight:bold">Đá xóa: <input type="radio" id="yes" name="delete" value="yes"></label>
+                        <label class="col-form-label" style="font-weight:bold">Chưa xóa: <input checked type="radio" id="no" name="delete" value="no"></label>
+                    </div>
+                </div>
+                    <div class="mb-3">
+                        <label class="col-form-label" for="decription" style="font-weight:bold">Mô Tả: </label> <input class="form-control" type="text" id="decription"><br />
+                    </div>
+                    <div class="mb-3">
+
+                        <input name="Test" type="checkbox" id="status" style="font-weight:bold" />Đã xử lý
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-primary" data-bind="click:$root.save">Lưu</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/js/admin/RegisterTicketAdmin1.js"></script>
+
+}
+

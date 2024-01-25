@@ -1,0 +1,47 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+<script>
+    const backendUrl = "https://backend-btl-duong.mooo.com";
+</script>
+@using Microsoft.AspNetCore.Identity
+@using BackEnd.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<div class="text-center">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <input hidden type="text" id="admin" value=@UserManager.GetUserAsync(User).Result.Id>
+        <h1>Thống kê số phiếu đăng kí theo ngày và khung giờ </h1>
+        <div data-bind="foreach:$root.arrays">
+            <div>
+                <div style="text-align:left">
+                    <h4>Ngày gặp:</h4>
+                    <p data-bind="text:dateMeet"></p>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">Khung giờ </th>
+                            <th style="text-align: center">Số phiếu </th>
+
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach:gio">
+                        <tr>
+                            <td data-bind="text:decription"></td>
+                            <td data-bind="text:phieu"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        @section Scripts {
+
+            <script src="~/js/admin/Statistics/StatisticsRegisToTime.js"></script>
+        }
+    }
+
+</div>

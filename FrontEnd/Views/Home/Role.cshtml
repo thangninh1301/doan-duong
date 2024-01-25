@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewData["Title"] = "Role";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1 align="center">Danh Sách Quyền</h1>
+
+    <p>
+
+       <button type="button" class="btn btn-primary" data-bind="click:$root.Create">Tạo Mới</button>
+    </p>
+<div> 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                <th>
+                    Tên quyền truy cập
+                </th>
+                <th>
+                    Tên phổ biến
+                </th>
+
+                <th>
+                    Lựa chọn
+                </th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach:$root.array">
+            <tr>
+                <td data-bind="text:id">
+                </td>
+                <td data-bind="text:name">
+                </td>
+                <td data-bind="text:normalizedName">
+                </td>
+                <td>
+                    <button id="Update" data-bind="click:$root.Update">Edit</button> |
+                    <button id="Details">Details</button> |
+                    <button id="Delete" data-bind="click:$root.Delete">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+        <div id="modal" class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="col-form-label" for="Id">Id </label> <input class="form-control" type="text" id="id" ><br />
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label" for="Tên quyền truy cập">Tên quyền truy cập </label> <input class="form-control" type="text" id="name"><br />
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label" for="Tên phổ biến">Tên phổ biến </label> <input class="form-control" type="text" id="normalizedName" /><br />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" data-bind="click:$root.save">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    @section Scripts{
+
+        <script src="~/js/admin/Role.js"></script>
+    }
