@@ -1,5 +1,5 @@
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
-WORKDIR /src
+WORKDIR "/src/BackEnd"
 EXPOSE 80
 EXPOSE 443
 
@@ -17,6 +17,6 @@ FROM build AS publish
 RUN dotnet publish "BackEnd.csproj" -c Release -o /app/publish
 
 FROM base AS final
-WORKDIR /src
+WORKDIR "/src/BackEnd"
 COPY --from=publish /src/publish .
 ENTRYPOINT ["dotnet", "BackEnd.dll"]
