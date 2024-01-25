@@ -11,10 +11,10 @@ WORKDIR /src
 COPY . .
 WORKDIR "/src/BackEnd"
 RUN dotnet restore
-RUN dotnet build "BackEnd.csproj" -c Release -o /app/build
+RUN dotnet build "BackEnd.csproj" -c Release -o /src/build
 
 FROM build AS publish
-RUN dotnet publish "BackEnd.csproj" -c Release -o /app/publish
+RUN dotnet publish "BackEnd.csproj" -c Release -o /src/publish
 
 FROM base AS final
 WORKDIR "/src/BackEnd"
