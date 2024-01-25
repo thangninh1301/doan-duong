@@ -5,10 +5,10 @@
     <UserSecretsId>aspnet-Login-9EC0A6CD-48F8-4A5A-8D01-4C7A5DBB804C</UserSecretsId>
   </PropertyGroup>
 
-<!--   <ItemGroup> -->
-<!--     <Content Remove="wwwroot\JsUsers\UserApointmentTicket.js" /> -->
-<!--     <Content Remove="wwwroot\JsUsers\UserRegisterTicket.js" /> -->
-<!--   </ItemGroup> -->
+  <ItemGroup>
+    <Content Remove="wwwroot\JsUsers\UserApointmentTicket.js" />
+    <Content Remove="wwwroot\JsUsers\UserRegisterTicket.js" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Include="Views\Doctor\DoctorApoint.cshtml" />
