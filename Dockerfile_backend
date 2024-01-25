@@ -1,5 +1,5 @@
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
-WORKDIR "/src/BackEnd"
+WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
@@ -11,12 +11,15 @@ WORKDIR /src
 COPY . .
 WORKDIR "/src/BackEnd"
 RUN dotnet restore
-RUN dotnet build "BackEnd.csproj" -c Release -o /src/build
+RUN dotnet build "BackEnd.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "BackEnd.csproj" -c Release -o /src/publish
+RUN dotnet publish "BackEnd.csproj" -c Release -o /app/publish
 
 FROM base AS final
-WORKDIR "/src/BackEnd"
-COPY --from=publish /src/publish .
+WORKDIR /app/BackEnd/Resources/
+COPY BackEnd/Resources .
+
+WORKDIR /app
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "BackEnd.dll"]
