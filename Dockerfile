@@ -21,5 +21,5 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "MyApp.dll"]
-#docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=PasSWord321@" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest ubuntu@13.212.32.188
+#docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=PasSWord321@" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest ubuntu@18.143.174.158
 #ssh -i id_rsa -R 1433:127.0.0.1:1433 bolt@10.10.10.159
