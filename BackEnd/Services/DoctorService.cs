@@ -1,4 +1,4 @@
-﻿using BackEnd.Data;
+using BackEnd.Data;
 using BackEnd.IService;
 using BackEnd.Models;
 using Microsoft.AspNetCore.Identity;
@@ -60,7 +60,7 @@ namespace BackEnd.Service
                      on rg.Id equals ap.IdRegisterTicket
                      where ap.IdDoctor == doctor
                      group rg by rg.IdPatient into newrg
-                     select new 
+                     select new
                      {
                          patient = newrg.Key,
                          lastName = _context.ApplicationUsers.Find(newrg.Key).LastName,
@@ -76,31 +76,32 @@ namespace BackEnd.Service
                                  on newrgingr.IdTimeMeet equals ts.Id
                                  select new Models.RegisterTicket
                                  {
-                                     Id= newrgingr.Id,
+                                     Id = newrgingr.Id,
                                      Symptom = newrgingr.Symptom,
-                                     apointmentTicket = new Models.ApointmentTicket {
-                                        Id = ap.Id,
-                                        Status=ap.Status,
-                                        
-                                        Result = new Models.Result
-                                        {
-                                            Id = ap.Result.Id
-                                        },
-                                        Doctor = new Models.ApplicationUser
-                                        {
-                                            LastName = ap.Doctor.LastName,
-                                           
-                                        }
+                                     apointmentTicket = new Models.ApointmentTicket
+                                     {
+                                         Id = ap.Id,
+                                         Status = ap.Status,
+
+                                         Result = new Models.Result
+                                         {
+                                             Id = ap.Result.Id
+                                         },
+                                         Doctor = new Models.ApplicationUser
+                                         {
+                                             LastName = ap.Doctor?.LastName ?? ""
+
+                                         }
                                      },
                                      Timeslot = new Models.TimeSlot
                                      {
                                          Decription = ts.Decription,
                                      }
                                  },
-                        
+
 
                      };
-                
+
 
             return ob.ToList();
         }
