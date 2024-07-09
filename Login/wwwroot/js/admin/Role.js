@@ -45,7 +45,7 @@
         $.ajax({
             type: "get",
             url: backendUrl + "/api/Role",
-           // url: "https://backend-btl-duong.mooo.com/api/Role",
+           // url: "https://backend-btl.mooo.com/api/Role",
             contentType: "application/json",
             success: function (data) {
                 $.each(data, function (ex, item) { self.array.push(item) });
@@ -74,7 +74,7 @@
             $.ajax({
                 type: "POST",
                 url: backendUrl + "/api/Role",
-                //url: "https://backend-btl-duong.mooo.com/api/Role",
+                //url: "https://backend-btl.mooo.com/api/Role",
                 data: JSON.stringify(crdata),
                 contentType: "application/json",
                 success: function () {
@@ -115,7 +115,7 @@
             $.ajax({
                 type: "PUT",
                 url: backendUrl + "/api/Role/" + item.id,
-               // url: "https://backend-btl-duong.mooo.com/api/Role/" + item.id,
+               // url: "https://backend-btl.mooo.com/api/Role/" + item.id,
                 data: JSON.stringify(crdata),
                 contentType: "application/json",
 
@@ -138,7 +138,7 @@
             $.ajax({
                 type: "delete",
                 url: backendUrl + "/api/Role/" + item.id,
-               // url: "https://backend-btl-duong.mooo.com/api/Role/" + item.id,
+               // url: "https://backend-btl.mooo.com/api/Role/" + item.id,
                 contentType: "application/json",
                 success: function (data) {
                     console.log(item);

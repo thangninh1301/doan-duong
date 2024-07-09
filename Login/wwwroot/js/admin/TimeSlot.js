@@ -45,7 +45,7 @@
         $.ajax({
             type: "get",
             url: backendUrl + "/api/TimeSlot/Admin",
-           // url: "https://backend-btl-duong.mooo.com/api/TimeSlot/Admin",
+           // url: "https://backend-btl.mooo.com/api/TimeSlot/Admin",
             contentType: "application/json",
             success: function (data) {
                 $.each(data, function (ex, item) { self.array.push(item) });
@@ -74,7 +74,7 @@
             $.ajax({
                 type: "POST",
                 url: backendUrl + "/api/TimeSlot",
-               // url: "https://backend-btl-duong.mooo.com/api/TimeSlot",
+               // url: "https://backend-btl.mooo.com/api/TimeSlot",
                 data: JSON.stringify(crdata),
                 contentType: "application/json",
                 success: function (data) {
@@ -116,7 +116,7 @@
             $.ajax({
                 type: "PUT",
                 url: backendUrl + "/api/TimeSlot",
-               // url: "https://backend-btl-duong.mooo.com/api/TimeSlot" ,
+               // url: "https://backend-btl.mooo.com/api/TimeSlot" ,
                 data: JSON.stringify(crdata),
                 contentType: "application/json",
 
@@ -139,7 +139,7 @@
             $.ajax({
                 type: "PUT",
                 url: backendUrl + "/api/TimeSlot/delete/" + item.id,
-                //url: "https://backend-btl-duong.mooo.com/api/TimeSlot/delete/" + item.id,
+                //url: "https://backend-btl.mooo.com/api/TimeSlot/delete/" + item.id,
                 contentType: "application/json",
                 success: function (data) {
 

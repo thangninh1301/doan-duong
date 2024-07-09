@@ -9,7 +9,7 @@ var viewmodel = function () {
         self.arrayDepartment([]);
         $.ajax({
             type: "get",
-            url: "https://backend-btl-duong.mooo.com/api/Department",
+            url: "https://backend-btl.mooo.com/api/Department",
             contentType: "application/json",
             success: function (data) {
                 self.arrayDepartment([]);
@@ -27,7 +27,7 @@ var viewmodel = function () {
     self.loadApoinMent_ticket = function (regis) {
         $.ajax({
             type: "GET",
-            url: "https://backend-btl-duong.mooo.com/api/ApointmentTickets",
+            url: "https://backend-btl.mooo.com/api/ApointmentTickets",
             contentType: "application/json",
             success: function (data) {
                 $('#dateMeet').val(regis.dateMeet)
@@ -60,7 +60,7 @@ var viewmodel = function () {
         self.arrayTimeSlot([]);
         $.ajax({
             type: "GET",
-            url: "https://backend-btl-duong.mooo.com/api/TimeSlot",
+            url: "https://backend-btl.mooo.com/api/TimeSlot",
             contentType: "application/json",
             success: function (data) {
                 $.each(data, function (ex, item) {
@@ -81,7 +81,7 @@ var viewmodel = function () {
         //load Regis
         $.ajax({
             type: "GET",
-            url: "https://backend-btl-duong.mooo.com/api/RegisterTicket",
+            url: "https://backend-btl.mooo.com/api/RegisterTicket",
             contentType: "application/json",
             success: function (data) {
 
@@ -89,7 +89,7 @@ var viewmodel = function () {
                     item.nameTimeMeet = "";
                     $.ajax({
                         type: "GET",
-                        url: "https://backend-btl-duong.mooo.com/api/TimeSlot/" + item.idTimeMeet,
+                        url: "https://backend-btl.mooo.com/api/TimeSlot/" + item.idTimeMeet,
                         contentType: "application/json",
                         success: function (data1) {
                             item.nameTimeMeet = data1.decription;
@@ -138,14 +138,14 @@ var viewmodel = function () {
             if (item.status == 0) {
                 $.ajax({
                     type: "post",
-                    url: "https://backend-btl-duong.mooo.com/api/ApointmentTickets",
+                    url: "https://backend-btl.mooo.com/api/ApointmentTickets",
                     data: JSON.stringify(crdata),
                     contentType: "application/json",
                     success: function (data) {
                         console.log(data);      
                         $.ajax({
                             type: "PUT",
-                            url: "https://backend-btl-duong.mooo.com/api/RegisterTicket",
+                            url: "https://backend-btl.mooo.com/api/RegisterTicket",
                             data: JSON.stringify(DAdata),
                             contentType: "application/json",
                             success: function (data) { console.log(data) },
@@ -167,7 +167,7 @@ var viewmodel = function () {
                 crdata.Id = parseInt($('#idApointment').val());
                 $.ajax({
                     type: "put",
-                    url: "https://backend-btl-duong.mooo.com/api/ApointmentTickets",
+                    url: "https://backend-btl.mooo.com/api/ApointmentTickets",
                     data: JSON.stringify(crdata),
                     contentType: "application/json",
 

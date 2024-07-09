@@ -7,7 +7,7 @@
         self.arrayTimeSlot([]);
         $.ajax({
             type: "GET",
-            url: "https://backend-btl-duong.mooo.com/api/TimeSlot",
+            url: "https://backend-btl.mooo.com/api/TimeSlot",
             contentType: "application/json",
             success: function (data) {
                 $.each(data, function (ex, item) {
@@ -28,7 +28,7 @@
         self.arrayDoctor([]);
         $.ajax({
             type: "get",
-            url: "https://backend-btl-duong.mooo.com/api/Admin/Doctor/" + idDepart ,
+            url: "https://backend-btl.mooo.com/api/Admin/Doctor/" + idDepart ,
             contentType: "application/json",
             success: function (data) {
                 self.arrayDoctor([]);
@@ -46,7 +46,7 @@
         self.arrayDepartment([]);
         $.ajax({
             type: "get",
-            url: "https://backend-btl-duong.mooo.com/api/Department",
+            url: "https://backend-btl.mooo.com/api/Department",
             contentType: "application/json",
             success: function (data) {
                 self.arrayDepartment([]);
@@ -68,7 +68,7 @@
     self.loadApoinMent_ticket = function (regis) {
         $.ajax({
             type: "GET",
-            url: "https://backend-btl-duong.mooo.com/api/ApointmentTickets/" + regis.idApointment,
+            url: "https://backend-btl.mooo.com/api/ApointmentTickets/" + regis.idApointment,
             contentType: "application/json",
             success: function (data) {
                 self.checkTimeSlot(data);
@@ -98,7 +98,7 @@
         self.arrays([]);
         $.ajax({
             type: "GET",
-            url: "https://backend-btl-duong.mooo.com/api/Admin",
+            url: "https://backend-btl.mooo.com/api/Admin",
             contentType: "application/json",
             success: function (data) {
                 $.each(data, function (ex, item) {
@@ -114,7 +114,7 @@
         
         $.ajax({
             type: "get",
-            url: "https://backend-btl-duong.mooo.com/api/Admin/Date/" + $('#inputDate').val(),
+            url: "https://backend-btl.mooo.com/api/Admin/Date/" + $('#inputDate').val(),
             contentType: "application/json",
             
             success: function (data) {
@@ -152,7 +152,7 @@
             }
             $.ajax({
                 type: "POST",
-                url: "https://backend-btl-duong.mooo.com/api/Admin/Add",
+                url: "https://backend-btl.mooo.com/api/Admin/Add",
                 data: JSON.stringify(ob),
                 contentType: "application/json",
                 success: function (data) {

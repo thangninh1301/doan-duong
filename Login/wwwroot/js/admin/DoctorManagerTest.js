@@ -48,7 +48,7 @@
         $.ajax({
             type: "get",
             url: backendUrl + "/api/Test/Admin",
-            // url: "https://backend-btl-duong.mooo.com/api/Test/Admin",
+            // url: "https://backend-btl.mooo.com/api/Test/Admin",
             contentType: "application/Json",
             success: function (data) {
                 $.each(data, function (ex, item) {
@@ -71,7 +71,7 @@
         $.ajax({
             type: "get",
             url: backendUrl + "/api/Admin/AllDoctorTest",
-            // url: "https://backend-btl-duong.mooo.com/api/Admin/AllDoctor",
+            // url: "https://backend-btl.mooo.com/api/Admin/AllDoctor",
             contentType: "application/json",
             success: function (data) {
                 self.arrays([]);
@@ -124,7 +124,7 @@
             $.ajax({
                 type: "PUT",
                 url: backendUrl + "/api/User/" + item.id,
-                //url: "https://backend-btl-duong.mooo.com/api/User/" + item.id,
+                //url: "https://backend-btl.mooo.com/api/User/" + item.id,
                 data: JSON.stringify(Obj),
                 contentType: "application/json",
 
@@ -148,7 +148,7 @@
             $.ajax({
                 type: "put",
                 url: backendUrl + "/api/User/delete/" + item.id,
-                // url: "https://backend-btl-duong.mooo.com/api/User/delete/" + item.id,
+                // url: "https://backend-btl.mooo.com/api/User/delete/" + item.id,
                 success: function (data) {
                     self.click();
                     self.showtoastState("Xóa thành công");

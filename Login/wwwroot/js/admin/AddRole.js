@@ -47,7 +47,7 @@
         $.ajax({
             type: "get",
             url: backendUrl + "/api/Admin/AllUserRole" ,
-           // url: "https://backend-btl-duong.mooo.com/api/Admin/AllUserRole",
+           // url: "https://backend-btl.mooo.com/api/Admin/AllUserRole",
             contentType: "application/json",
             success: function (data) {
                 self.arrays([]);
@@ -65,7 +65,7 @@
         $.ajax({
             type: "get",
             url: backendUrl + "/api/Role",
-           // url: "https://backend-btl-duong.mooo.com/api/Role",
+           // url: "https://backend-btl.mooo.com/api/Role",
             contentType: "application/json",
             success: function (data) {
                 self.selectedRoles([]);
@@ -107,7 +107,7 @@
                 $.ajax({
                     type: "post",
                     url: backendUrl + "/api/Admin/AddRoleForUser",
-                   // url: "https://backend-btl-duong.mooo.com/api/Admin/AddRoleForUser",
+                   // url: "https://backend-btl.mooo.com/api/Admin/AddRoleForUser",
                     contentType: "application/json",
                     data: JSON.stringify(data1),
                     success: function (data) {

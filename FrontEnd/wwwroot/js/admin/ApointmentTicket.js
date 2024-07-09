@@ -10,7 +10,7 @@ var viewmodel = function () {
         self.arrayTimeSlot([]);
         $.ajax({
             type: "get",
-            url: "https://backend-btl-duong.mooo.com/api/TimeSlot",
+            url: "https://backend-btl.mooo.com/api/TimeSlot",
             contentType: "application/json",
             success: function (data) {
                 $.each(data, function (ex, item) {
@@ -29,7 +29,7 @@ var viewmodel = function () {
         self.arrayDepartment([]);
         $.ajax({
             type: "get",
-            url: "https://backend-btl-duong.mooo.com/api/Department",
+            url: "https://backend-btl.mooo.com/api/Department",
             contentType: "application/json",
             success: function (data) {
                 $.each(data, function (ex, item) {
@@ -48,7 +48,7 @@ var viewmodel = function () {
         self.arrays([]);
         $.ajax({
             type: "get",
-            url: "https://backend-btl-duong.mooo.com/api/ApointmentTickets",
+            url: "https://backend-btl.mooo.com/api/ApointmentTickets",
             contentType: "application/json",
             success: function (data) {
                 
@@ -56,13 +56,13 @@ var viewmodel = function () {
                     item.nameDepartment = "";
                     $.ajax({
                         type: "get",
-                        url: "https://backend-btl-duong.mooo.com/api/Department/" + item.idDepartment,
+                        url: "https://backend-btl.mooo.com/api/Department/" + item.idDepartment,
                         contentType: "application/json",
                         success: function (data1) {
                             item.nameDepartment = data1.name;
                             $.ajax({
                                 type: "get",
-                                url: "https://backend-btl-duong.mooo.com/api/TimeSlot/" + item.idTimeMeet,
+                                url: "https://backend-btl.mooo.com/api/TimeSlot/" + item.idTimeMeet,
                                 contentType: "application/json",
                                 success: function (data2) {
                                     item.decriptionTimeMet = data2.decription;

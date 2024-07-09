@@ -5,7 +5,7 @@
         $.ajax({
             type: "GET",
             url: backendUrl + "/api/Admin/Statistic/doctorInDepart",
-           // url: "https://backend-btl-duong.mooo.com/api/Admin/Statistic/doctorInDepart" ,
+           // url: "https://backend-btl.mooo.com/api/Admin/Statistic/doctorInDepart" ,
             contentType: "application/json",
             dataType: "json",
             success: function (data) {

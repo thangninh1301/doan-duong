@@ -7,7 +7,7 @@
         $.ajax({
             type: "GET",
             url: backendUrl + "/api/Admin/statistic/patient",
-            //url: "https://backend-btl-duong.mooo.com/api/Admin/statistic/patient",
+            //url: "https://backend-btl.mooo.com/api/Admin/statistic/patient",
             contentType: "application/json",
             dataType: "json",
             success: function (data) {
@@ -29,7 +29,7 @@
            
            $.ajax({
                type: "GET",
-               url: "https://backend-btl-duong.mooo.com/api/Admin/statisticPatient/Time",
+               url: "https://backend-btl.mooo.com/api/Admin/statisticPatient/Time",
                contentType: "application/json",
                dataType: "json",
                success: function (data) {

@@ -10,7 +10,7 @@
         $.ajax({
             type: "GET",
             url: backendUrl + "/api/Adminthongke/admin/" + id,
-           // url: "https://backend-btl-duong.mooo.com/api/Adminthongke/admin/" + id,
+           // url: "https://backend-btl.mooo.com/api/Adminthongke/admin/" + id,
             contentType: "application/json",
             dataType: "json",
             success: function (data) {

@@ -1,7 +1,7 @@
 ﻿@using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
 <script>
-    const backendUrl = "https://backend-btl-duong.mooo.com";
+    const backendUrl = "https://backend-btl.mooo.com";
 </script>
 @{
     ViewData["Title"] = "Home Page";
@@ -163,7 +163,7 @@
                                                                 <td data-bind="text:diagnostic"></td>                                                               
                                                                 <td>
                                                                     <!--ko ifnot: urlFile=='' -->
-                                                                    <a data-bind="attr: { href: 'https://backend-btl-duong.mooo.com/'+urlFile}">Click here</a>
+                                                                    <a data-bind="attr: { href: 'https://backend-btl.mooo.com/'+urlFile}">Click here</a>
                                                                     <!--/ko-->
                                                                 </td>                                                  
                                                                 <td>

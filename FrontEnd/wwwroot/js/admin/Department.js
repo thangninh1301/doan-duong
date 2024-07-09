@@ -7,7 +7,7 @@ var viewmodel = function () {
         self.array([]);
         $.ajax({
             type: "get",
-            url: "https://backend-btl-duong.mooo.com/api/Department",
+            url: "https://backend-btl.mooo.com/api/Department",
             contentType: "application/Json",
             success: function (data) {
                 $.each(data, function (ex, item) {
@@ -37,7 +37,7 @@ var viewmodel = function () {
             }
             $.ajax({
                 type: "POST",
-                url: "https://backend-btl-duong.mooo.com/api/Department",
+                url: "https://backend-btl.mooo.com/api/Department",
                 data: JSON.stringify(crdata),
                 contentType: "application/json",
                 success: function () {
@@ -76,7 +76,7 @@ var viewmodel = function () {
                 }
                 $.ajax({
                     type: "PUT",
-                    url: "https://backend-btl-duong.mooo.com/api/Department",
+                    url: "https://backend-btl.mooo.com/api/Department",
                     data: JSON.stringify(crdata),
                     contentType: "application/json",
 
@@ -96,7 +96,7 @@ var viewmodel = function () {
             if (confirm("ban muon xoa " + item.name + " khong")) {
                 $.ajax({
                     type: "PUT",
-                    url: "https://backend-btl-duong.mooo.com/api/Department/" + item.id,
+                    url: "https://backend-btl.mooo.com/api/Department/" + item.id,
                     contentType: "application/json",
                     success: function (data) {
 

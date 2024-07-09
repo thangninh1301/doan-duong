@@ -47,7 +47,7 @@
         $.ajax({
             type: "get",
             url: backendUrl + "/api/Departments",
-           // url: "https://backend-btl-duong.mooo.com/api/Departments",
+           // url: "https://backend-btl.mooo.com/api/Departments",
             contentType: "application/Json",
             success: function (data) {
                 $.each(data, function (ex, item) {
@@ -69,7 +69,7 @@
         $.ajax({
             type: "get",
             url: backendUrl + "/api/Admin/Doctor",
-            //url: "https://backend-btl-duong.mooo.com/api/Admin/Doctor",
+            //url: "https://backend-btl.mooo.com/api/Admin/Doctor",
             contentType: "application/json",
             success: function (data) {
                 $.each(data, function (ex, item) {
@@ -77,7 +77,7 @@
                     $.ajax({
                         type: "get",
                         url: backendUrl + "/api/Departments/" + item.idDepartment,
-                       // url: "https://backend-btl-duong.mooo.com/api/Departments/" + item.idDepartment,
+                       // url: "https://backend-btl.mooo.com/api/Departments/" + item.idDepartment,
                         contentType: "application/json",
                         success: function (data1) {
                                 item.nameDepartment = data1.name;
@@ -138,7 +138,7 @@
             $.ajax({
                 type: "PUT",
                 url: backendUrl + "/api/User/" + item.id,
-                //url: "https://backend-btl-duong.mooo.com/api/User/" + item.id,
+                //url: "https://backend-btl.mooo.com/api/User/" + item.id,
                 data: JSON.stringify(Obj),
                 contentType: "application/json",
 
@@ -162,7 +162,7 @@
             $.ajax({
                 type: "put",
                 url: backendUrl + "/api/User/delete/" + item.id,
-               // url: "https://backend-btl-duong.mooo.com/api/User/delete/" + item.id,
+               // url: "https://backend-btl.mooo.com/api/User/delete/" + item.id,
                 success: function (data) {
                     self.click();
                     self.showtoastState("Xóa thành công");

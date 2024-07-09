@@ -47,7 +47,7 @@
         $.ajax({
             type: "get",
             url: backendUrl + "/api/Test/Admin",
-            //url: "https://backend-btl-duong.mooo.com/api/Test/Admin",
+            //url: "https://backend-btl.mooo.com/api/Test/Admin",
             contentType: "application/Json",
             success: function (data) {
                 $.each(data, function (ex, item) {
@@ -75,7 +75,7 @@
             $.ajax({
                 type: "POST",
                 url: backendUrl + "/api/Test",
-                // url: "https://backend-btl-duong.mooo.com/api/Test",
+                // url: "https://backend-btl.mooo.com/api/Test",
                 data: JSON.stringify(crdata),
                 contentType: "application/json",
                 success: function () {
@@ -113,7 +113,7 @@
             $.ajax({
                 type: "PUT",
                 url: backendUrl + "/api/Test/" + item.id,
-                // url: "https://backend-btl-duong.mooo.com/api/Test/" +,
+                // url: "https://backend-btl.mooo.com/api/Test/" +,
                 data: JSON.stringify(crdata),
                 contentType: "application/json",
 
@@ -136,7 +136,7 @@
             $.ajax({
                 type: "DELETE",
                 url: backendUrl + "/api/Test/" + item.id,
-                // url: "https://backend-btl-duong.mooo.com/api/Test/" + item.id,
+                // url: "https://backend-btl.mooo.com/api/Test/" + item.id,
                 contentType: "application/json",
                 success: function (data) {
 

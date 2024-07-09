@@ -5,7 +5,7 @@
         self.array([]);
         $.ajax({
             type: "get",
-            url: "https://backend-btl-duong.mooo.com/api/Role",
+            url: "https://backend-btl.mooo.com/api/Role",
             contentType: "application/json",
             success: function (data) {
                 $.each(data, function (ex, item) { self.array.push(item) });
@@ -29,7 +29,7 @@
             }
             $.ajax({
                 type: "POST",
-                url: "https://backend-btl-duong.mooo.com/api/Role",
+                url: "https://backend-btl.mooo.com/api/Role",
                 data: JSON.stringify(crdata),
                 contentType: "application/json",
                 success: function () {
@@ -61,7 +61,7 @@
             }
             $.ajax({
                 type: "PUT",
-                url: "https://backend-btl-duong.mooo.com/api/Role/" + item.id,
+                url: "https://backend-btl.mooo.com/api/Role/" + item.id,
                 data: JSON.stringify(crdata),
                 contentType: "application/json",
 
@@ -82,7 +82,7 @@
         if (confirm("ban muon xoa " + item.name+ " khong")) {
             $.ajax({
                 type: "delete",
-                url: "https://backend-btl-duong.mooo.com/api/Role/" + item.id,
+                url: "https://backend-btl.mooo.com/api/Role/" + item.id,
                 contentType: "application/json",
                 success: function (data) {
                     console.log(item);
