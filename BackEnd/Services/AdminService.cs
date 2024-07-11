@@ -297,7 +297,7 @@ namespace BackEnd.Service
         {
             var x = _roleManager.FindByNameAsync("Doctor").Result;
             var ab = from userrole in _context.UserRoles
-                     where userrole.RoleId == "02"
+                     where userrole.RoleId == "04"
                      join user in _context.ApplicationUsers.DefaultIfEmpty() on userrole.UserId equals user.Id
                      join depart in _context.Departments on user.IdDepartment equals depart.Id into newDepart
                      from a in newDepart.DefaultIfEmpty()
@@ -325,7 +325,7 @@ namespace BackEnd.Service
         {
             var x = _roleManager.FindByNameAsync("Doctor").Result;
             var ab = from userrole in _context.UserRoles
-                     where userrole.RoleId == "04"
+                     where userrole.RoleId == "01"
                      join user in _context.ApplicationUsers.DefaultIfEmpty() on userrole.UserId equals user.Id
                      join test in _context.Tests on user.IdTest equals test.Id into newTest
                      from a in newTest.DefaultIfEmpty()
